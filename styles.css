@@ -8,11 +8,11 @@ body {
 }
 
 #game-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-gap: 20px;
+    gap: 20px;
 }
 
 #story-display {
@@ -38,32 +38,88 @@ body {
     padding: 10px 15px;
     cursor: pointer;
     text-align: left;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    border-radius: 4px;
 }
 
 .choice-btn:hover {
     background-color: #4a4a4a;
+    transform: translateY(-2px);
+}
+
+.choice-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#side-panels {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #inventory-container, #stats-container {
     background-color: #2a2a2a;
     padding: 15px;
     border-radius: 5px;
+    height: fit-content;
+}
+
+h2 {
+    color: #f0c14b;
+    margin-top: 0;
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 10px;
 }
 
 h3 {
     margin-top: 0;
     border-bottom: 1px solid #4a4a4a;
     padding-bottom: 5px;
+    color: #f0c14b;
 }
 
 #inventory-list {
     list-style-type: none;
     padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#inventory-list li {
+    padding: 5px;
+    background-color: #3a3a3a;
+    border-radius: 3px;
 }
 
 .stat-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    padding: 5px;
+    background-color: #3a3a3a;
+    border-radius: 3px;
+}
+
+.stat-name {
+    font-weight: bold;
+}
+
+.combat-text {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.health-text {
+    color: #ff6b6b;
+}
+
+.mana-text {
+    color: #6b8cff;
+}
+
+.gold-text {
+    color: #f0c14b;
 }
