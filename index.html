@@ -5,41 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shadows of the Blood Moon</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Fauna+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Fauna+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="game-container">
         <div id="header">
             <h1>SHADOWS OF THE BLOOD MOON</h1>
-            <div id="moon-phase"></div>
+            <div id="moon-phase" title="Waxing Crescent"></div>
         </div>
-        <div id="story-display"></div>
+        <div id="story-display">
+            <div id="story-content"></div>
+        </div>
         <div id="choices-container"></div>
         <div id="side-panels">
-            <div id="inventory-container">
+            <div class="panel" id="inventory-container">
                 <h3>⟡ Inventory ⟡</h3>
                 <ul id="inventory-list"></ul>
             </div>
-            <div id="stats-container">
+            <div class="panel" id="stats-container">
                 <h3>⟡ Character ⟡</h3>
                 <div id="stats-display"></div>
             </div>
-            <div id="quest-container">
+            <div class="panel" id="quest-container">
                 <h3>⟡ Quest Log ⟡</h3>
                 <div id="quest-display"></div>
             </div>
         </div>
-        <div id="sound-controls">
-            <button id="toggle-sound">🔊 Sound On</button>
-            <button id="toggle-music">🎵 Music On</button>
-        </div>
     </div>
-    <audio id="ambient-sound" loop>
-        <source src="" type="audio/mpeg">
-    </audio>
-    <audio id="music-sound" loop>
-        <source src="" type="audio/mpeg">
-    </audio>
     <script src="game.js"></script>
 </body>
 </html>
