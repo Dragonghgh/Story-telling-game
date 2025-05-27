@@ -1,211 +1,122 @@
-:root {
-    --primary: #1a0a0a;
-    --secondary: #3d1a1a;
-    --accent: #c97d60;
-    --text: #f0e6d2;
-    --highlight: #e0a170;
-    --blood: #6b2a2a;
-}
+/* ... (previous CSS remains the same) ... */
 
-body {
-    font-family: 'Fauna One', serif;
-    background-color: var(--primary);
-    color: var(--text);
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-    background-image: 
-        radial-gradient(circle at center, var(--primary) 0%, #000 100%),
-        url('https://i.imgur.com/ZYdS8hD.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-blend-mode: multiply;
-}
-
-#game-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
-#header {
+/* ===== COMBAT UI ===== */
+#combat-container {
+    display: none;
     grid-column: 1 / -1;
-    text-align: center;
-    border-bottom: 2px solid var(--accent);
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-}
-
-h1 {
-    font-family: 'Cinzel Decorative', cursive;
-    color: var(--highlight);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    letter-spacing: 3px;
-    margin: 10px 0;
-}
-
-#moon-phase {
-    width: 50px;
-    height: 50px;
-    background: var(--text);
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 
-        inset -12px 0 0 0 var(--blood),
-        0 0 10px rgba(201, 125, 96, 0.5);
-    border: 1px solid var(--accent);
-    transition: all 0.5s ease;
-}
-
-#story-display {
-    grid-column: 1 / -1;
-    background-color: rgba(29, 16, 16, 0.8);
-    padding: 25px;
+    background: rgba(20, 5, 5, 0.9);
+    border: 2px solid var(--blood);
     border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid var(--accent);
-    box-shadow: 
-        inset 0 0 10px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(0, 0, 0, 0.3);
-    min-height: 200px;
-}
-
-#story-content {
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-#choices-container {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.choice-btn {
-    background-color: var(--secondary);
-    color: var(--text);
-    border: 1px solid var(--accent);
-    padding: 12px 20px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.3s;
-    border-radius: 4px;
-    font-family: 'Fauna One', serif;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.choice-btn:hover {
-    background-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.choice-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    background-color: var(--primary);
-}
-
-#side-panels {
-    grid-column: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.panel {
-    background-color: rgba(29, 16, 16, 0.8);
     padding: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--accent);
-    box-shadow: 
-        inset 0 0 10px rgba(0, 0, 0, 0.3),
-        0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-h3 {
-    font-family: 'Cinzel Decorative', cursive;
-    color: var(--highlight);
-    margin-top: 0;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 8px;
-    font-size: 18px;
-    letter-spacing: 1px;
-}
-
-#inventory-list {
-    list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     margin-top: 10px;
 }
 
-#inventory-list li {
-    padding: 8px 12px;
-    background-color: rgba(61, 26, 26, 0.5);
+.combat-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.combatant {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.combat-health {
+    width: 100px;
+    height: 10px;
+    background: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.combat-health-fill {
+    height: 100%;
+    background: var(--health);
+    transition: width 0.3s;
+}
+
+.combat-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.combat-btn {
+    background: var(--secondary);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 8px;
     border-radius: 4px;
-    border-left: 3px solid var(--accent);
+    cursor: pointer;
     transition: all 0.2s;
 }
 
-#inventory-list li:hover {
-    background-color: rgba(107, 42, 42, 0.5);
-    transform: translateX(3px);
+.combat-btn:hover {
+    background: var(--accent);
 }
 
-.stat-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    padding: 6px;
-    background-color: rgba(61, 26, 26, 0.3);
-    border-radius: 3px;
+/* ===== SPELL BOOK ===== */
+#spellbook {
+    display: none;
+    grid-column: 1 / -1;
+    background: rgba(10, 5, 15, 0.9);
+    border: 1px solid #6b8cff;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
 }
 
-.stat-name {
-    font-weight: bold;
-    color: var(--highlight);
+.spell {
+    padding: 8px;
+    margin: 5px 0;
+    background: rgba(30, 20, 50, 0.7);
+    border-left: 3px solid #6b8cff;
+    cursor: pointer;
 }
 
-.combat-text {
-    color: #ff9e9e;
-    font-weight: bold;
+.spell:hover {
+    background: rgba(50, 40, 80, 0.7);
 }
 
-.health-text {
-    color: #ff6b6b;
-}
-
-.mana-text {
+/* ===== COMPANION UI ===== */
+.companion-dialogue {
+    font-style: italic;
     color: #9ad3ff;
+    margin: 10px 0;
+    border-left: 2px solid #6b8cff;
+    padding-left: 10px;
 }
 
-.gold-text {
-    color: #f0c14b;
+/* ===== ENDINGS UI ===== */
+.ending-screen {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 20px;
+    background: rgba(10, 0, 0, 0.9);
+    border: 2px solid var(--blood);
+    border-radius: 8px;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    #game-container {
-        grid-template-columns: 1fr;
-    }
-    
-    #story-display, #header {
-        grid-column: 1;
-    }
-    
-    #side-panels {
-        grid-column: 1;
-        grid-template-columns: 1fr 1fr;
-    }
+.ending-title {
+    color: var(--highlight);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.restart-btn {
+    background: var(--secondary);
+    color: var(--text);
+    border: 1px solid var(--accent);
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.restart-btn:hover {
+    background: var(--accent);
 }
